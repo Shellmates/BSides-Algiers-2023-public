@@ -1,0 +1,10 @@
+services:
+  client:
+    build: ./client
+    ports:
+      - 3000:5173
+
+  server:
+    build: ./server
+    ports: 
+      - 5000:5000

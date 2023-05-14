@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Website checker</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+    <h1>Check website connection</h1>
+    <form id="check">
+        <label class="mytitle">Host:</label>
+        <input type="text" id="Host" name="Host" value="https://bsides.shellmates.club/">
+        <button type="submit">Execute</button>
+    </form>
+    <br>
+    <div class="result">
+        <span class="mytitle">Result:   </span>
+        <span class="result-text" id="result"></span>
+      </div>
+
+      <script src= "{{ url_for('static',filename='script.js') }}"></script>
+
+</body>
+</html>

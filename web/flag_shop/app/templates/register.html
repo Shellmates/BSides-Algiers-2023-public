@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - Flag Shop{% endblock %}
+
+{% block content %}
+
+        <h1 class="text-4xl font-bold my-8">Register</h1>
+        {% if error %}
+            <p style="color:red;">{{ error }}</p>
+        {% endif %}
+        <form action="{{ url_for('register') }}" method="POST">
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="username">Username</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="username" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="password">Password</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="password" name="password" required>
+            </div>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Register</button>
+        </form>
+
+{% endblock %}

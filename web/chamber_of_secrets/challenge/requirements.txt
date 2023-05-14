@@ -1,0 +1,6 @@
+flask
+flask_cors
+flask-sock
+gevent
+gunicorn
+git+https://github.com/cjboyle/tinymongo

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Jokes Hub</title>
+	<link href="{{ url_for('static', filename='/css/roboto.css') }}" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<nav>
+		<div class="container">
+			<h1>Jokes Hub</h1>
+		</div>
+	</nav>
+	<main>
+		<div class="container">
+			<h2>Get a Joke</h2>
+			<button class="btn" id="getJokeBtn">Get a Joke</button>
+			<div class="joke-container" id="jokeContainer">
+				<p class="joke-setup"></p>
+				<button class="btn" id="showPunchlineBtn">Show Punchline</button>
+				<p class="joke-punchline"></p>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<div class="container">
+			<p>&copy; Jokes Hub 2023</p>
+		</div>
+	</footer>
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

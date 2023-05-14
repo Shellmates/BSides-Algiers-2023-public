@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ezprmtinj
+  labels:
+    challenge: ezprmtinj
+    category: misc
+    egress: allow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      challenge: ezprmtinj
+      category: misc
+      egress: allow
+  template:
+    metadata:
+      labels:
+        challenge: ezprmtinj
+        category: misc
+        egress: allow
+    spec:
+      containers:
+      - name: ezprmtinj-client
+        image: gcr.io/shellmates-ctfs/ezprmtinj-client
+        ports:
+        - containerPort: 5173
+        resources:
+          requests:
+            cpu: 10m
+            memory: 30Mi
+          limits:
+            cpu: 200m
+            memory: 300Mi
+      - name: ezprmtinj-server
+        image: gcr.io/shellmates-ctfs/ezprmtinj-server
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            cpu: 10m
+            memory: 30Mi
+          limits:
+            cpu: 200m
+            memory: 300Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ezprmtinj-service
+  labels:
+    challenge: ezprmtinj
+    category: misc
+    egress: allow
+spec:
+  type: NodePort
+  ports:
+    - port: 5173
+      name: client
+      targetPort: 5173
+      nodePort: 30406
+    - port: 5000
+      name: server
+      targetPort: 5000
+      nodePort: 30408
+  selector:
+    challenge: ezprmtinj
+    category: misc
+    egress: allow

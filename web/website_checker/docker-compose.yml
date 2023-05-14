@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    restart: always
+    ports: 
+      - '1337:1337'
+    healthcheck:
+      test: ["CMD-SHELL", "curl --silent --fail localhost:1337/ || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 3

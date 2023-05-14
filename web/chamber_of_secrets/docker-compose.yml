@@ -1,0 +1,6 @@
+version: '0.1'
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"

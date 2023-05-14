@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Flag Shop{% endblock %}
+
+{% block content %}
+
+        <h1 class="text-4xl font-bold my-8">Flag Shop</h1>
+        <h3 class="text-2xl font-bold mb-3">Balance : {{ balance }}</h2>
+        <h4 class="text-2xl font-bold mb-2">Available Flags</h2>
+        
+        <table class="w-full">
+            <thead>
+                <tr>
+                    <th class="text-left px-4 py-2">Name</th>
+                    <th class="text-left px-4 py-2">Description</th>
+                    <th class="text-left px-4 py-2">Price</th>
+                    <th class="text-left px-4 py-2">Buy</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for flag_id in flags %}
+                    <tr>
+                        <td class="border px-4 py-2">{{ flags[flag_id].name }}</td>
+                        <td class="border px-4 py-2">{{ flags[flag_id].description }}</td>
+                        <td class="border px-4 py-2">{{ flags[flag_id].price }}</td>
+                        <td class="border px-4 py-2"><a href="{{ url_for('buy_flag', flag_id=flag_id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Buy</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+        {% if message %}
+            <p style="color:rgb(20, 201, 50);">{{ message }}</p>
+        {% endif %}
+
+        <form action="{{ url_for('redeem') }}" method="post" class="mt-8">
+            <label class="block font-bold mb-2" for="ticket">Redeem a ticket</label>
+            <input class="border border-gray-400 p-2 rounded-lg w-full" type="text" name="ticket" required>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
+              Redeem
+            </button>
+          </form>
+    
+{% endblock %}

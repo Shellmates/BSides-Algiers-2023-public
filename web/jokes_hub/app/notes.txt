@@ -1,0 +1,3 @@
+Add function to upload jokes
+Use prepaired queries instead of the 
+unload fileio from the production server
